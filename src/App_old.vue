@@ -1,18 +1,21 @@
 <template>
   <div id="app">
     <Header/>
-
-    <router-view/>
+    <AddTodo v-on:add-todo="addTodo"/>
+    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
   </div>
 </template>
 
 <script>
+import Todos from "./components/Todos";
 import Header from "./components/layout/Header";
-
+import AddTodo from "./components/AddTodo";
 export default {
   name: "App",
   components: {
-    Header
+    Todos,
+    Header,
+    AddTodo
   },
   data() {
     return {
@@ -69,9 +72,6 @@ export default {
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -81,4 +81,3 @@ export default {
   /* margin-top: 60px; */
 }
 </style>
-
